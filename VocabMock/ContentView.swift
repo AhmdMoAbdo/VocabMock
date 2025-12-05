@@ -13,12 +13,15 @@ struct ContentView: View {
     private var doneOnboarding: Bool {
         UserDefaultsHandler.shared.doneOnboarding
     }
+    private var didShowWelcomeScreen: Bool {
+        UserDefaultsHandler.shared.didShowHomeWelcomeScreen
+    }
     
     // MARK: - Drawing View
     var body: some View {
         ZStack {
             if didDisplayOnBoardingFlow || doneOnboarding {
-                Home()
+                Home(showWelcomeScreen: !didShowWelcomeScreen)
             }
             if !doneOnboarding {
                 OnboardingScreenView(doneWithOnboarding: $didDisplayOnBoardingFlow)

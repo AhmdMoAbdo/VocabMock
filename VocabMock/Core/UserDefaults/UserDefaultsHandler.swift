@@ -13,6 +13,7 @@ class UserDefaultsHandler {
         case doneOnboarding
         case userAnswers
         case currentScreenIndex
+        case didShowHomeWelcomeScreen
     }
     
     // MARK: - Properties
@@ -37,6 +38,15 @@ class UserDefaultsHandler {
             return get([OnBoardingScreenType].self, forKey: .userAnswers)
         } set {
             set(newValue, forKey: .userAnswers)
+        }
+    }
+    
+    /// Welcome screen in home to be displayed once in the app life time
+    var didShowHomeWelcomeScreen: Bool {
+        get {
+            return userDefaults.bool(forKey: UDKeys.didShowHomeWelcomeScreen.rawValue)
+        } set {
+            userDefaults.set(newValue, forKey: UDKeys.didShowHomeWelcomeScreen.rawValue)
         }
     }
     

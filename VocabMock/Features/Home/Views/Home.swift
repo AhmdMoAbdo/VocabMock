@@ -51,6 +51,7 @@ struct Home: View {
         ScrollOffsetReader { offsetY in
             if offsetY == UIScreen.main.bounds.height && showWelcomeScreen {
                 showWelcomeScreen = false
+                UserDefaultsHandler.shared.didShowHomeWelcomeScreen = true
                 proxy.scrollTo(0)
                 
             }
