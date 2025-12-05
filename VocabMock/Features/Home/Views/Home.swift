@@ -11,7 +11,6 @@ struct Home: View {
     // MARK: - Properties
     @State var viewModel = HomeViewModel()
     @State var showWelcomeScreen: Bool = true
-    @State var offset: CGFloat = 0
     var theme: Themes {
         UserDefaultsHandler.shared.selectedTheme
     }
@@ -50,7 +49,6 @@ struct Home: View {
     // MARK: - Scroll offset reader to calculate current offset and hide the welcome top view
     private func createScrollOffsetReader(proxy: ScrollViewProxy) -> some View {
         ScrollOffsetReader { offsetY in
-            self.offset = offsetY
             if offsetY == UIScreen.main.bounds.height && showWelcomeScreen {
                 showWelcomeScreen = false
                 proxy.scrollTo(0)
